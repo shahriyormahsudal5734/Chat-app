@@ -1,0 +1,12 @@
+
+{% for x in data|slice:'0:1' %}
+<script>
+location.href = 'room/{{x.id}}/'
+</script>
+{% endfor %}
+<center>
+    Room mavjud emas room qowing <a  href="/create/">Create</a>
+</center>
+
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    ul{
+        display: none;
+    }
+</style>
+
+
+
+
+{% if p == '' %}
+{% else %}
+<script>
+alert('{{p}}')
+</script>
+{% endif %}
+    
+
+    
+
+    
+<body>
+    
+
+
+<center>
+<h1>Signup <a href="/" class="btn btn-warning">Home</a></h1><br>
+
+<form method="POST" >
+    {% csrf_token %}
+    <div style="width: 300px;">
+        {{ form.as_p }}
+    </div>
+    
+    <center>
+        <button style="width: 200px;" id="btn" disabled class="btn btn-danger mb-1"  type="submit">Ro'yxatdan o'tish</button><br>
+        <a style="width: 200px;" class="btn btn-primary mb-1" href="{% url 'login' %}">Akkauntingiz bormi?</a><br>
+        <button style="width: 200px;" type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Royhatdan otish Qoidasi</button>
+    </center>
+</form>
+</center>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Qoida</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>
+                Sizning parolingiz boshqa shaxsiy ma'lumotlaringizga juda o'xshash bo'lishi mumkin emas.
+                Parolingiz kamida 8 ta belgidan iborat boʻlishi kerak.
+                Sizning parolingiz to'liq raqamli bo'lishi mumkin emas.
+                Ismingiz kamida 5 ta harifdan iborat bolsin
+                </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+    addEventListener("input",()=>{
+
+        
+    document.getElementById('id_password2').value =  document.getElementById('id_password1').value
+   if (document.getElementById('id_password1').value.length > 7 && document.getElementById('id_username').value.length > 4 ) {
+    document.getElementById('btn').removeAttribute('disabled')
+    document.getElementById('btn').setAttribute('class','btn btn-success')
+   }else{
+    document.getElementById('btn').setAttribute('disabled','')
+    document.getElementById('btn').setAttribute('class','btn btn-danger')
+   }
+
+    })
+    document.getElementById('id_password2').parentElement.style.display = 'none'
+    document.getElementById('id_username').parentElement.children[2].style.display = 'none'
+    
+    document.getElementById('id_username').setAttribute('placeholder','Username')
+    document.getElementById('id_password1').setAttribute('placeholder','Password')
+
+    document.getElementById('id_password1').setAttribute('class',' form-control')
+    document.getElementById('id_username').setAttribute('class',' form-control')
+    document.getElementById('id_username').parentElement.children[0].style.display = 'none'
+    document.getElementById('id_password1').parentElement.children[0].style.display = 'none'
+
+
+
+</script>
+</body>
+
+
+</html>
